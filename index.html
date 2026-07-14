@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메가스터디교육 정보보안팀 직무 소개</title>
+    <style>
+        /* 기본 스타일 설정 */
+        :root {
+            --mega-blue: #003A78; /* 메가스터디교육 연상 딥 블루 */
+            --light-blue: #EBF3FA;
+            --text-dark: #333333;
+            --text-gray: #666666;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Pretendard', 'Malgun Gothic', sans-serif; color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3 { font-weight: 700; margin-bottom: 20px; }
+        p { margin-bottom: 15px; color: var(--text-gray); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        
+        /* 섹션별 배경 */
+        .bg-white { background-color: #FFFFFF; }
+        .bg-light { background-color: var(--light-blue); }
+        .bg-dark { background-color: var(--mega-blue); color: #FFFFFF; }
+        .bg-dark p, .bg-dark h2 { color: #FFFFFF; }
+
+        /* Hero 섹션 (인트로) */
+        .hero { text-align: center; padding: 100px 20px; }
+        .hero h1 { font-size: 2.5rem; color: var(--mega-blue); margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; }
+        .badge { display: inline-block; background: var(--mega-blue); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 20px; }
+
+        /* 그리드 레이아웃 (카드형) */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        
+        /* 카드 디자인 */
+        .card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--mega-blue); font-size: 1.3rem; border-bottom: 2px solid var(--light-blue); padding-bottom: 10px; }
+        
+        /* 역량 체크리스트 */
+        .check-list { list-style: none; text-align: left; max-width: 600px; margin: 0 auto; }
+        .check-list li { background: #fff; margin-bottom: 15px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 5px solid var(--mega-blue); display: flex; align-items: center; }
+        .check-list li::before { content: '✔️'; margin-right: 15px; font-size: 1.2rem; }
+
+        /* 인터뷰 섹션 */
+        .interview-bubble { background: #fff; padding: 25px; border-radius: 15px 15px 15px 0; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); position: relative; }
+        .interview-bubble::after { content: ''; position: absolute; bottom: 0; left: -10px; border-width: 10px 10px 0 0; border-style: solid; border-color: #fff transparent transparent transparent; }
+        .interviewer { font-weight: bold; color: var(--mega-blue); margin-bottom: 5px; }
+
+        /* 푸터 */
+        footer { text-align: center; padding: 40px 20px; background: #222; color: #aaa; }
+    </style>
+</head>
+<body>
+
+    <!-- Section 1: Hero -->
+    <header class="hero bg-light">
+        <div class="container">
+            <span class="badge">메력 3기 | 직무 밀착 취재</span>
+            <h1>안전한 배움의 공간을 지키는<br>보이지 않는 방패 🛡️</h1>
+            <p>메가스터디교육 정보보안팀은 어떻게 일하고 있을까요?<br>예비 보안 인재들을 위해 우리 팀의 모든 것을 공개합니다.</p>
+        </div>
+    </header>
+
+    <!-- Section 2: 팀 & 업무 소개 -->
+    <section class="bg-white">
+        <div class="container">
+            <h2 style="text-align: center;">팀 소개 및 주요 업무 💻</h2>
+            <p style="text-align: center;">수백만 수험생과 임직원의 소중한 데이터를 보호하고, 흔들림 없는 인프라를 수호합니다.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>보안 기획 / 컴플라이언스</h3>
+                    <p>최신 법령과 규제를 분석하여 회사에 맞는 보안 정책을 수립합니다. ISMS-P 등 주요 정보보호 인증을 유지하고 관리하는 핵심 역할을 수행합니다.</p>
+                </div>
+                <div class="card">
+                    <h3>인프라 / 클라우드 보안</h3>
+                    <p>서버, 네트워크, 클라우드 환경의 취약점을 점검하고 보안 시스템을 운영합니다. 외부의 사이버 위협으로부터 메가스터디의 인프라를 안전하게 방어합니다.</p>
+                </div>
+                <div class="card">
+                    <h3>개인정보 보호 / 사고 대응</h3>
+                    <p>고객의 소중한 개인정보가 안전하게 처리되도록 모니터링하며, 보안 이벤트 발생 시 신속하게 원인을 분석하고 침해 사고에 대응합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: 팀 장점 -->
+    <section class="bg-dark">
+        <div class="container">
+            <h2 style="text-align: center;">우리 팀, 이건 정말 최고! ✨</h2>
+            <p style="text-align: center;">정보보안팀에서만 누릴 수 있는 특별한 문화와 장점을 소개합니다.</p>
+            
+            <div class="grid">
+                <div class="card" style="background: rgba(255,255,255,0.1); color: #fff; box-shadow: none;">
+                    <h3 style="color: #fff; border-color: rgba(255,255,255,0.3);">📚 아낌없는 성장 지원</h3>
+                    <p style="color: #ddd;">빠르게 변하는 보안 트렌드를 놓치지 않도록! 각종 보안 세미나 참석, 도서 구매, 사내 스터디 등 팀원들의 기술 스킬업을 적극적으로 지원합니다.</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.1); color: #fff; box-shadow: none;">
+                    <h3 style="color: #fff; border-color: rgba(255,255,255,0.3);">🗣️ 수평적인 기술 토론</h3>
+                    <p style="color: #ddd;">직급에 얽매이지 않습니다. 합리적인 보안 아키텍처나 새로운 솔루션 도입에 대해 누구나 자유롭게 의견을 내고 치열하게 토론하는 문화를 지향합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: 요구 역량 -->
+    <section class="bg-light">
+        <div class="container">
+            <h2 style="text-align: center;">이런 예비 팀원을 기다려요 🤝</h2>
+            <p style="text-align: center;">우리는 기술력뿐만 아니라 함께 일하는 시너지를 중요하게 생각합니다.</p>
+            
+            <ul class="check-list" style="margin-top: 40px;">
+                <li><strong>보안에 대한 끝없는 호기심:</strong> 새로운 해킹 기법과 방어 기술에 대해 항상 관심을 가지고 탐구하는 분</li>
+                <li><strong>논리적인 문제 해결 능력:</strong> 복잡한 시스템 구조 속에서 취약점의 근본 원인을 파악하고 논리적으로 해결책을 도출하는 분</li>
+                <li><strong>유연한 커뮤니케이션:</strong> 개발팀, 인프라팀 등 다양한 부서와 협업하며 '안전하면서도 효율적인' 합의점을 이끌어내는 분</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 5: 팀원 인터뷰 -->
+    <section class="bg-white">
+        <div class="container">
+            <h2 style="text-align: center;">현직자가 말하는 리얼 정보보안팀 🎤</h2>
+            <div style="max-width: 800px; margin: 40px auto 0;">
+                
+                <div class="interview-bubble">
+                    <div class="interviewer">보안기획 담당 A 선배</div>
+                    "보안은 단순히 통제하고 막는 것이 아니라, 회사의 서비스가 '안전하게' 잘 굴러갈 수 있도록 돕는 조력자라고 생각해요. 다른 팀들과 소통하며 최적의 보안 방안을 찾아내어 서비스에 적용했을 때 가장 큰 보람을 느낍니다!"
+                </div>
+
+                <div class="interview-bubble">
+                    <div class="interviewer">인프라보안 담당 B 선배</div>
+                    "메가스터디교육처럼 대규모 트래픽과 방대한 데이터를 다루는 곳에서 보안 실무를 경험하는 것은 흔치 않은 기회입니다. 실패를 두려워하지 않고 끊임없이 성장하고 싶은 열정적인 분이라면 무조건 환영합니다. 함께 발전해 나가요!"
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>여러분의 합류로 더 단단해질 메가스터디교육 정보보안팀!<br>주저하지 말고 지원해 주세요. 🚀</p>
+        <p style="margin-top: 20px; font-size: 0.8rem;">© 2026 Megastudy Edu Information Security Team. All rights reserved.<br>(본 페이지는 사내 간담회 미션용으로 제작되었습니다.)</p>
+    </footer>
+
+</body>
+</html>
