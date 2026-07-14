@@ -10,7 +10,7 @@
         /* 브랜드 컬러 및 기본 변수 설정 */
         :root {
             --mega-blue: #0072CE; /* Pantone 285 C (C:90 M:45) */
-            --mega-black: #000000; /* Logotype Black 100% */
+            --mega-black: #000000;
             --text-dark: #222222;
             --text-gray: #555555;
             
@@ -26,7 +26,6 @@
             font-family: 'Noto Sans KR', sans-serif; 
             color: var(--text-dark); 
             line-height: 1.6;
-            /* 글라스모피즘을 돋보이게 하는 입체적인 배경 */
             background-color: #f8fafc;
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(0, 114, 206, 0.08), transparent 25%),
@@ -35,17 +34,12 @@
             overflow-x: hidden;
         }
 
-        /* 텍스트 하이라이트 */
         .highlight { color: var(--mega-blue); font-weight: 700; }
-        
-        /* 공통 컨테이너 */
         .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; position: relative; z-index: 2; }
         
-        /* 헤더 & 로고 */
         header { padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; position: absolute; width: 100%; top: 0; z-index: 10; }
-        .logo-img { height: 40px; object-fit: contain; } /* megastydu-si.png 파일이 로드되는 부분 */
+        .logo-img { height: 40px; object-fit: contain; } 
 
-        /* 글라스모피즘 카드 공통 스타일 */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(16px);
@@ -57,7 +51,6 @@
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
-        /* 호버 반응형 액션 */
         .glass-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px 0 rgba(0, 114, 206, 0.25);
@@ -68,7 +61,6 @@
         h1, h2, h3 { font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
         h2 { font-size: 2.2rem; text-align: center; margin-bottom: 50px; color: var(--mega-black); }
 
-        /* 사진 추천 플레이스홀더 (개발 시 실제 img 태그로 변경) */
         .photo-placeholder {
             width: 100%;
             background: linear-gradient(45deg, #e0eafc, #cfdef3);
@@ -79,135 +71,129 @@
             margin-bottom: 20px;
         }
 
-        /* Hero 섹션 */
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 80px; }
         .hero h1 { font-size: 3.5rem; color: var(--mega-black); line-height: 1.3; margin-bottom: 20px; font-weight: 900; }
         .hero p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px; }
         
-        /* 브랜드 심볼 의미 섹션 */
         .brand-story { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
         .brand-story .text-box { flex: 1; min-width: 300px; }
         .brand-story .text-box p { font-size: 1.05rem; margin-bottom: 15px; }
 
-        /* 그리드 레이아웃 */
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
 
-        /* 아이콘 스타일 */
         .icon-circle { width: 60px; height: 60px; background: var(--mega-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
 
-        /* 인터뷰 섹션 확장 */
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { position: relative; padding-left: 30px; margin-bottom: 15px; font-size: 1.05rem; }
+        .check-list li::before { content: '✔️'; position: absolute; left: 0; top: 0; color: var(--mega-blue); }
+
         .interview-card { position: relative; padding-top: 50px; }
         .profile-pic { width: 80px; height: 80px; border-radius: 50%; background: #ddd; position: absolute; top: -40px; left: 40px; border: 4px solid #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .interview-card p.quote { font-size: 1.1rem; font-style: normal; color: var(--text-dark); margin-bottom: 15px; position: relative; }
         .interview-card p.quote::before { content: '"'; font-size: 3rem; color: rgba(0, 114, 206, 0.2); position: absolute; top: -15px; left: -20px; font-family: serif; }
         .interview-card .author { font-weight: 700; color: var(--mega-blue); display: block; text-align: right; }
 
-        /* 푸터 */
         footer { text-align: center; padding: 60px 20px; background: var(--mega-black); color: #fff; }
-        footer .logo-img { filter: brightness(0) invert(1); margin-bottom: 20px; } /* 어두운 배경용 White 로고 적용 */
+        footer .logo-img { filter: brightness(0) invert(1); margin-bottom: 20px; }
 
-        /* 반응형 모바일 최적화 */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .glass-card { padding: 30px 20px; }
-            br.desktop-only { display: none; } /* 모바일에서는 줄바꿈 무시 */
+            br.desktop-only { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header (로고) -->
+    <!-- Header -->
     <header>
-        <!-- ❗ megastydu-si 라는 파일명의 이미지 경로를 src에 맞춰주세요. 확장자가 png/jpg 등일 것입니다. -->
-        <img src="megastydu-si.png" alt="메가스터디교육 로고" class="logo-img">
+        <img src="megastudy-si.svg" alt="메가스터디교육 로고" class="logo-img">
     </header>
 
-    <!-- Section 1: Hero (인트로) -->
+    <!-- Section 1: Hero -->
     <section class="hero container">
         <div class="glass-card" style="max-width: 900px; width: 100%; border-top: 4px solid var(--mega-blue);">
-            <!-- 📷 추천 사진 1: 팀 전체가 밝게 웃으며 회의하거나 모니터를 보는 와이드 배경 사진 -->
             <div class="photo-placeholder" style="height: 250px;">
-                [추천 사진 1] 활기찬 정보보안팀 단체 사진 또는 세련된 보안 관제실 배경
+                [사진 등록: 팀 업무 공간 또는 회의 모습]
             </div>
-            <h1>디지털 시대의 교육을 수호하는<br class="desktop-only"><span class="highlight">무한한 가능성의 방패</span></h1>
-            <p>1등 교육 기업 메가스터디교육의 온·오프라인 통합 서비스를 지키는<br class="desktop-only">정보보안팀의 일하는 방식과 문화를 소개합니다.</p>
+            <h1>디지털 시대의 교육을 수호하는<br class="desktop-only"><span class="highlight">견고한 정보보안 방패</span></h1>
+            <p>메가스터디교육의 중요 정보와 자산을 보호하는 컨트롤 타워,<br class="desktop-only">정보보안팀의 일하는 방식과 문화를 소개합니다.</p>
         </div>
     </section>
 
-    <!-- Section 2: 메가스터디 로고 의미 (Brand Identity) -->
+    <!-- Section 2: 메가스터디 로고 의미 -->
     <section class="container">
-        <h2>우리가 지키는 가치, <span class="highlight">MegaStudy</span></h2>
+        <h2>우리가 수호하는 가치, <span class="highlight">MegaStudy</span></h2>
         <div class="glass-card brand-story">
             <div class="text-box">
                 <p>메가스터디교육의 심볼은 영문 <strong>MegaStudy</strong>를 기본으로, <strong>Mega의 'M'</strong>자와 <strong>Study의 'S'</strong> 두 글자를 기초로 제작되었습니다. 특히 중심부의 <strong>'S'자는 무한대(∞) 기호로 변형</strong>하여 <span class="highlight">무한한 교육의 가능성</span>을 표현합니다.</p>
                 <p>정교한 직선과 유연한 곡선을 동시에 활용하여 디지털 시대 온·오프라인 통합 서비스 기업의 이미지를 나타내며, 인터넷 및 멀티미디어 신기술을 접목하여 지역적, 환경적 한계를 뛰어넘는 교육을 실현합니다.</p>
-                <p><strong>정보보안팀은 이러한 '국내 온라인교육 분야의 Leading Company'로서의 위상을 지키는 가장 핵심적인 역할을 수행하고 있습니다.</strong></p>
+                <p><strong>정보보안팀은 전사적인 정보보호 관리체계를 구축하여, 이러한 '국내 온라인교육 분야 Leading Company'로서의 위상을 굳건히 지켜내고 있습니다.</strong></p>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: 직무 소개 -->
+    <!-- Section 3: 직무 소개 (세련된 실무자 톤) -->
     <section class="container">
-        <h2>정보보안팀 <span class="highlight">주요 직무 소개</span></h2>
+        <h2>정보보안팀 <span class="highlight">핵심 직무 소개</span></h2>
         <div class="grid-3">
             <div class="glass-card">
-                <!-- 📷 추천 사진 2 -->
-                <div class="photo-placeholder" style="height: 150px;">[추천 사진] 화이트보드 앞에서 기획안을 논의하는 모습</div>
                 <div class="icon-circle">📋</div>
-                <h3>보안 기획 및 컴플라이언스</h3>
-                <p>ISMS-P 등 주요 정보보호 인증 체계를 유지하고 관리합니다. 최신 법령과 보안 규제를 선제적으로 분석하여, 메가스터디교육에 최적화된 내부 보안 정책과 마스터플랜을 수립하는 컨트롤 타워 역할을 수행합니다.</p>
+                <h3>개인정보보호 및 컴플라이언스</h3>
+                <p>사내 비즈니스 환경에 최적화된 정보보호 관리체계를 기획하고 고도화합니다. 관련 법령과 규제 변화를 선제적으로 분석하여 컴플라이언스 리스크를 최소화하며, 유관 부서가 안전하게 업무를 수행할 수 있도록 표준화된 보안 가이드라인을 제공합니다.</p>
             </div>
             
             <div class="glass-card">
-                <!-- 📷 추천 사진 3 -->
-                <div class="photo-placeholder" style="height: 150px;">[추천 사진] 듀얼 모니터로 인프라를 모니터링하는 모습</div>
-                <div class="icon-circle">☁️</div>
-                <h3>클라우드 및 인프라 보안</h3>
-                <p>온프레미스 네트워크와 AWS 등 클라우드 환경의 아키텍처 취약점을 점검합니다. 방화벽, IPS 등 보안 솔루션을 고도화하여 외부의 사이버 위협으로부터 수백만 명의 트래픽을 안전하게 방어합니다.</p>
+                <div class="icon-circle">🎯</div>
+                <h3>취약점 진단 및 리스크 매니지먼트</h3>
+                <p>신규 서비스 런칭 전반에 걸친 보안성 검토를 수행하여 잠재적 위협을 사전에 차단합니다. 정기적인 시스템 진단 및 모의해킹을 통해 취약점을 식별하고 개선 방안을 도출함으로써, 고객에게 도달하는 서비스의 무결성과 신뢰성을 검증합니다.</p>
             </div>
 
             <div class="glass-card">
-                <!-- 📷 추천 사진 4 -->
-                <div class="photo-placeholder" style="height: 150px;">[추천 사진] 유관 부서(개발팀 등)와 미팅하는 모습</div>
-                <div class="icon-circle">🔐</div>
-                <h3>개인정보 보호 및 취약점 분석</h3>
-                <p>학생과 학부모의 소중한 개인정보 라이프사이클을 안전하게 관리합니다. 또한, 자체적인 모의해킹 및 어플리케이션 취약점 진단을 통해 서비스 런칭 전 발생할 수 있는 리스크를 사전에 완벽히 차단합니다.</p>
+                <div class="icon-circle">🧱</div>
+                <h3>네트워크 아키텍처 및 방화벽 관리</h3>
+                <p>대내외 인프라 네트워크의 데이터 흐름과 접근 제어 정책을 총괄합니다. 주요 보안 솔루션을 최적화하여 트래픽을 상시 모니터링하며, 외부의 비정상적인 접근 시도로부터 핵심 자산과 중단 없는 서비스 환경을 견고하게 보장합니다.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section 4: 팀원 인터뷰 (내용 대폭 추가) -->
+    <!-- Section 4: 요구 역량 (실제 채용 공고 기반) -->
+    <section class="container">
+        <h2>이런 예비 팀원을 <span class="highlight">기다립니다</span></h2>
+        <div class="glass-card">
+            <ul class="check-list">
+                <li><strong>보안 전문성 입증 :</strong> 정보보호 관련 전공 지식을 갖추거나, 주요 보안 자격증(정보보안기사, CISSP, CISA, CPPG 등)을 보유하여 탄탄한 기초 역량을 증명하실 수 있는 분</li>
+                <li><strong>컴플라이언스 실무 경험 :</strong> 정보보호관리체계(ISMS) 또는 개인정보보호 관리체계(ISMS-P) 운영 및 심사 과정에 직접 참여해 본 경험이 있으신 분</li>
+                <li><strong>유연한 커뮤니케이션 :</strong> 다양한 유관 부서와 협업하며 명확하고 논리적인 보안 가이드라인을 제시할 수 있는 분</li>
+            </ul>
+            
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed var(--glass-border);">
+                <p style="color: var(--mega-blue); font-weight: 700; margin-bottom: 10px;">🏢 근무 조건</p>
+                <p style="font-size: 0.95rem; color: var(--text-gray);">
+                    · 고용형태 : 정규직<br>
+                    · 근무시간 : 주 5일 (09:00 ~ 18:00)<br>
+                    · 근무장소 : 서울시 서초구 효령로321, 메가스터디교육 본사
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: 목표 및 인터뷰 -->
     <section class="container">
         <h2>현직자가 말하는 <span class="highlight">리얼 인터뷰</span></h2>
         <div class="grid-2" style="row-gap: 60px;">
             
             <div class="glass-card interview-card">
-                <!-- 📷 추천 사진 5: 팀원 A의 프로필 사진 -->
-                <div class="profile-pic photo-placeholder" style="border-radius: 50%; font-size: 0.6rem;">[프로필]</div>
-                <p class="quote">"보안은 통제가 아니라 <strong>'비즈니스 조력자'</strong>입니다. 현업 개발자분들과 끊임없이 소통하면서, 서비스의 속도는 늦추지 않고 안전함만 더하는 최적의 합의점을 찾았을 때 가장 큰 희열을 느낍니다. 열린 마음으로 소통할 준비가 되셨다면 환영합니다!"</p>
-                <span class="author">- 보안 기획 담당 OOO 매니저</span>
+                <div class="profile-pic photo-placeholder" style="border-radius: 50%; font-size: 0.6rem;">[사진]</div>
+                <p class="quote">"우리 팀의 궁극적인 목표는 결국 <strong>'ISMS 인증 심사에 완벽하게 대응하고 유지하는 것'</strong>입니다. 파트별 전문성을 바탕으로 유기적으로 협력하여 메가스터디교육이 가장 신뢰받는 플랫폼임을 매일 증명해 내고 있습니다."</p>
+                <span class="author">- 보안 기획 담당 OOO 선배</span>
             </div>
 
             <div class="glass-card interview-card">
-                <!-- 📷 추천 사진 6: 팀원 B의 프로필 사진 -->
-                <div class="profile-pic photo-placeholder" style="border-radius: 50%; font-size: 0.6rem;">[프로필]</div>
-                <p class="quote">"대한민국에서 가장 많은 수험생 데이터를 다루는 1등 교육기업의 인프라를 직접 방어해 볼 수 있다는 것, 보안 엔지니어로서 엄청난 프라이드이자 커리어의 큰 자양분입니다. 실패를 두려워하지 않는 분이라면 우리 팀에서 폭발적으로 성장하실 수 있을 거예요."</p>
-                <span class="author">- 인프라 보안 담당 OOO 파트장</span>
-            </div>
-
-            <div class="glass-card interview-card">
-                <!-- 📷 추천 사진 7: 팀원 C의 프로필 사진 -->
-                <div class="profile-pic photo-placeholder" style="border-radius: 50%; font-size: 0.6rem;">[프로필]</div>
-                <p class="quote">"최신 해킹 기법과 방어 기술은 매일같이 쏟아집니다. 우리 팀은 <strong>'아낌없는 성장 지원'</strong>을 자랑해요. 관심 있는 외부 보안 세미나 참석은 물론, 도서 지원과 사내 스터디를 통해 팀원 모두가 함께 공부하고 최신 트렌드를 공유하는 문화가 정착되어 있습니다."</p>
-                <span class="author">- 취약점 분석 담당 OOO 사원</span>
-            </div>
-
-            <div class="glass-card interview-card">
-                <!-- 📷 추천 사진 8: 팀원 D의 프로필 사진 -->
-                <div class="profile-pic photo-placeholder" style="border-radius: 50%; font-size: 0.6rem;">[프로필]</div>
-                <p class="quote">"직급에 관계없이 기술적인 이슈에 대해 자유롭게 토론하는 수평적인 분위기입니다. 신입의 아이디어라도 타당하다면 즉각적으로 보안 정책에 반영되죠. 능동적이고 호기심 많은 예비 보안 전문가분들의 많은 지원을 기다리겠습니다."</p>
-                <span class="author">- 개인정보 보호 담당 OOO 팀장</span>
+                <div class="profile-pic photo-placeholder" style="border-radius: 50%; font-size: 0.6rem;">[사진]</div>
+                <p class="quote">"보안은 통제가 아니라 <strong>'비즈니스 조력자'</strong>입니다. 현업 부서들과 끊임없이 소통하며, 서비스의 속도는 늦추지 않고 안전함만 더하는 최적의 합의점을 찾았을 때 가장 큰 보람을 느낍니다."</p>
+                <span class="author">- 취약점 분석 담당 OOO 선배</span>
             </div>
 
         </div>
@@ -215,9 +201,9 @@
 
     <!-- Footer -->
     <footer>
-        <img src="megastydu-si.png" alt="메가스터디교육 로고" class="logo-img">
+        <img src="megastudy-si.svg" alt="메가스터디교육 로고" class="logo-img">
         <p>무한한 교육의 가능성을 안전하게 지키는 곳,<br>메가스터디교육 정보보안팀에서 당신의 도전을 기다립니다.</p>
-        <p style="margin-top: 30px; font-size: 0.8rem; color: rgba(255,255,255,0.5);">© Megastudy Edu Information Security Team. All rights reserved.</p>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: rgba(255,255,255,0.5);">© 2026 Megastudy Edu Information Security Team. All rights reserved.</p>
     </footer>
 
 </body>
