@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메가스터디교육 정보보안팀 채용</title>
-    <!-- 대세 폰트 Pretendard -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
-        /* 기본 변수 세팅 */
+        /* 전역 변수 설정 */
         :root {
             --mega-blue: #0072CE; 
             --mega-blue-light: #3399FF;
@@ -15,13 +14,14 @@
             --text-main: #2D3748;
             --text-muted: #5A6A82;
             
-            /* 카드 및 섀도우 디자인 */
+            /* 카드 및 그림자 변수 */
             --card-bg: rgba(255, 255, 255, 0.85);
             --card-border: rgba(255, 255, 255, 0.4);
             --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
             --card-hover-shadow: 0 20px 40px rgba(0, 114, 206, 0.12);
         }
 
+        /* 기본 초기화 */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
@@ -34,7 +34,7 @@
             word-break: keep-all; 
         }
 
-        /* 텍스트 그라데이션 및 하이라이트 효과 */
+        /* 텍스트 강조 스타일 */
         .text-gradient {
             background: linear-gradient(135deg, var(--mega-blue), #00D2FF);
             -webkit-background-clip: text;
@@ -46,20 +46,19 @@
             font-weight: 800;
         }
 
+        /* 레이아웃 컨테이너 */
         .container { max-width: 1200px; margin: 0 auto; padding: 120px 24px; position: relative; z-index: 2; }
         
-        /* 기본 헤더 (로고 고정용) */
+        /* 상단 헤더 영역 */
         header { 
             padding: 24px 40px; position: absolute; width: 100%; top: 0; z-index: 99; 
         }
         .logo-img { height: 32px; object-fit: contain; } 
 
-        /* -----------------------------------------------------
-           ✨ 플로팅 스티키 목차 (좌측 상단 토글형)
-        ----------------------------------------------------- */
+        /* 플로팅 내비게이션 영역 */
         .floating-nav {
             position: fixed;
-            top: 80px; /* 로고 아래에 위치 */
+            top: 80px; 
             left: 40px;
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(16px);
@@ -91,12 +90,12 @@
             box-shadow: 0 4px 10px rgba(0, 114, 206, 0.3);
         }
 
-        /* Hero 섹션 */
+        /* 메인 배너(Hero) 영역 */
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 100px; position: relative; z-index: 2; }
         .hero h1 { font-size: 4.5rem; color: var(--mega-dark); line-height: 1.3; margin-bottom: 24px; letter-spacing: -1px; }
         .hero p { font-size: 1.3rem; margin-bottom: 40px; color: var(--text-muted); }
 
-        /* 트렌디한 Pill 뱃지 */
+        /* 뱃지 컴포넌트 */
         .badge {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 10px 20px; background: #ffffff; color: var(--mega-blue);
@@ -105,12 +104,12 @@
             border: 1px solid rgba(0, 114, 206, 0.1);
         }
 
-        /* 공통 헤딩 및 텍스트 */
+        /* 공통 타이포그래피 */
         h1, h2, h3 { font-weight: 800; margin-bottom: 24px; letter-spacing: -0.03em; }
         h2 { font-size: 2.8rem; text-align: center; margin-bottom: 60px; color: var(--mega-dark); }
         .section-desc { font-size: 1.1rem; color: var(--text-muted); font-weight: 400; line-height: 1.7; max-width: 800px; margin: 0 auto; text-align: center;}
 
-        /* Bento Grid 및 카드 스타일 */
+        /* 카드 컴포넌트 공통 스타일 */
         .bento-card {
             background: var(--card-bg);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -122,10 +121,12 @@
             transform: translateY(-5px); box-shadow: var(--card-hover-shadow); border: 1px solid rgba(0, 114, 206, 0.3);
         }
         
+        /* 그리드 레이아웃 설정 */
         .bento-grid-1 { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
         .bento-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
         .bento-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 32px; }
 
+        /* 아이콘 컨테이너 */
         .icon-box { 
             width: 72px; height: 72px; 
             background: linear-gradient(135deg, #E6F0FA, #ffffff); 
@@ -136,9 +137,7 @@
             box-shadow: 0 8px 16px rgba(0, 114, 206, 0.08); 
         }
 
-        /* -----------------------------------------------------
-           요구역량 체크리스트 (가독성/줄바꿈 개선)
-        ----------------------------------------------------- */
+        /* 리스트 컴포넌트 */
         .check-list { list-style: none; padding-left: 0; max-width: 900px; margin: 0 auto; text-align: left; }
         .check-list li { 
             position: relative; padding: 32px 32px 32px 72px; margin-bottom: 24px; 
@@ -158,9 +157,7 @@
             font-size: 1rem; font-weight: bold; 
         }
 
-        /* -----------------------------------------------------
-           인터뷰 카드 (줄간격 및 배치 최적화)
-        ----------------------------------------------------- */
+        /* 인터뷰 카드 레이아웃 */
         .interview-card { display: flex; flex-direction: column; justify-content: space-between; padding: 40px; }
         .interview-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .emoji-pic { 
@@ -173,12 +170,11 @@
         
         .interview-card .question { font-weight: 800; color: var(--mega-dark); margin-bottom: 20px; font-size: 1.15rem; line-height: 1.5; }
         
-        /* 인용구 줄간격 제어 (너무 멀지 않게) */
         .quote-wrapper { padding-left: 16px; border-left: 4px solid #E2E8F0; }
         .quote-wrapper p { font-size: 1.05rem; color: var(--text-main); line-height: 1.6; margin-bottom: 12px; text-align: left; }
         .quote-wrapper p:last-child { margin-bottom: 0; }
 
-        /* 푸터 */
+        /* 하단 푸터 영역 */
         footer { text-align: center; padding: 80px 24px; background: var(--mega-dark); color: #fff; border-top-left-radius: 48px; border-top-right-radius: 48px; }
         footer .logo-img { filter: brightness(0) invert(1); margin-bottom: 24px; height: 32px; }
 
@@ -188,16 +184,28 @@
 
         /* 모바일 반응형 처리 */
         @media (max-width: 768px) {
+            header { padding: 16px 20px; }
+            .container { padding: 80px 16px; }
+            
             .floating-nav {
-                top: auto; bottom: 20px; left: 50%; transform: translateX(-50%);
-                width: 90%; justify-content: space-around; padding: 12px 16px; gap: 8px;
+                top: 70px; left: 50%; transform: translateX(-50%);
+                width: max-content; max-width: 90%; 
+                padding: 8px; gap: 4px;
+                overflow-x: auto; white-space: nowrap;
             }
             .nav-link { padding: 8px 12px; font-size: 0.85rem; }
-            .hero h1 { font-size: 2.8rem; }
-            .bento-card { padding: 32px; border-radius: 24px; }
-            h2 { font-size: 2.2rem; margin-bottom: 40px; }
+            
+            .hero h1 { font-size: 2.4rem; }
+            .hero p { font-size: 1.1rem; }
+            
+            h2 { font-size: 2rem; margin-bottom: 40px; }
+            
+            .bento-card { padding: 32px 24px; border-radius: 24px; }
+            
             .check-list li { padding: 24px 20px 24px 56px; }
             .check-list li::before { left: 16px; top: 24px; }
+            
+            .interview-card { padding: 32px 24px; }
         }
     </style>
 </head>
@@ -208,7 +216,7 @@
         <img src="megastudy-si.svg" alt="메가스터디교육 로고" class="logo-img">
     </header>
 
-    <!-- 좌측 상단 플로팅 스티키 목차 -->
+    <!-- 내비게이션 -->
     <nav class="floating-nav">
         <a href="#home" class="nav-link active">홈</a>
         <a href="#about" class="nav-link">팀 소개</a>
@@ -226,7 +234,7 @@
         </div>
     </section>
 
-    <!-- Section 2: 메가스터디 로고 의미 (팀 철학) -->
+    <!-- Section 2: 메가스터디 로고 의미 -->
     <section id="about" class="container reveal" style="padding-top: 80px;">
         <h2>우리가 수호하는 가치, <span class="text-gradient">MegaStudy</span></h2>
         <div class="bento-card" style="text-align: center;">
@@ -235,11 +243,10 @@
         </div>
     </section>
 
-    <!-- Section 3: 직무 소개 (Bento Grid) -->
+    <!-- Section 3: 직무 소개 -->
     <section id="tasks" class="container reveal" style="padding-top: 80px;">
         <h2>직무 및 <span class="text-gradient">핵심 역할</span></h2>
         
-        <!-- 팀 총괄 미션 박스 (구체적인 팀 소개) -->
         <div class="bento-grid-1">
             <div class="bento-card" style="background: linear-gradient(135deg, #ffffff, #F0F4F8); border: 2px solid rgba(0, 114, 206, 0.1);">
                 <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
@@ -254,7 +261,6 @@
             </div>
         </div>
 
-        <!-- 담당하고 있는 세부 업무 3가지 -->
         <div class="bento-grid-3">
             <div class="bento-card">
                 <div class="icon-box">📋</div>
@@ -286,7 +292,6 @@
     <section id="requirements" class="container reveal" style="padding-top: 80px;">
         <h2>이런 예비 팀원을 <span class="text-gradient">기다립니다</span></h2>
         
-        <!-- 줄바꿈 및 강조가 적용된 체크리스트 -->
         <ul class="check-list">
             <li>
                 <div class="req-title">탄탄한 보안 전문성 증명</div>
@@ -312,12 +317,11 @@
         </div>
     </section>
 
-    <!-- Section 5: 팀원 인터뷰 (줄간격 및 닉네임 수정) -->
+    <!-- Section 5: 인터뷰 -->
     <section id="interviews" class="container reveal" style="padding-top: 80px;">
         <h2>현직자의 <span class="text-gradient">리얼 보이스</span></h2>
         <div class="bento-grid-2">
             
-            <!-- 팀장님 -->
             <div class="bento-card interview-card">
                 <div>
                     <div class="interview-header">
@@ -336,14 +340,13 @@
                 </div>
             </div>
 
-            <!-- 과장님 -->
             <div class="bento-card interview-card">
                 <div>
                     <div class="interview-header">
                         <div class="emoji-pic">🕵️‍♂️</div>
                         <div class="author-info">
                             <span class="author-name">사이버 아키텍트</span>
-                            <span class="author-role">보안 아키텍처 담당</span>
+                            <span class="author-role">취약점 진단 및 내부감사 담당</span>
                         </div>
                     </div>
                     <div class="question">Q. 정보보안팀만의 장점이 무엇이라 생각하시나요?</div>
@@ -355,14 +358,13 @@
                 </div>
             </div>
 
-            <!-- 경환 선배님 -->
             <div class="bento-card interview-card">
                 <div>
                     <div class="interview-header">
                         <div class="emoji-pic">🧑‍🚀</div>
                         <div class="author-info">
                             <span class="author-name">스케일 디펜더</span>
-                            <span class="author-role">보안 운영 및 위협 대응 담당</span>
+                            <span class="author-role">보안 교육 및 침해사고 모의훈련 담당</span>
                         </div>
                     </div>
                     <div class="question">Q. 메가스터디교육에서 일하시며 성장하고 있다고 느끼게 된 계기나 경험이 있으신가요?</div>
@@ -374,14 +376,13 @@
                 </div>
             </div>
 
-            <!-- 진경 선배님 -->
             <div class="bento-card interview-card">
                 <div>
                     <div class="interview-header">
                         <div class="emoji-pic">👩‍💻</div>
                         <div class="author-info">
                             <span class="author-name">보안 프로파일러</span>
-                            <span class="author-role">보안 기획 및 컴플라이언스 담당</span>
+                            <span class="author-role">위험관리 및 보안 대책명세 담당</span>
                         </div>
                     </div>
                     <div class="question">Q. 메가스터디교육의 정보보안팀이 되길 꿈꾸는 분들에게 면접 노하우 한 가지만 말씀 부탁드립니다.</div>
@@ -393,14 +394,13 @@
                 </div>
             </div>
 
-            <!-- 도연 선배님 -->
             <div class="bento-card interview-card">
                 <div>
                     <div class="interview-header">
                         <div class="emoji-pic">👨‍💻</div>
                         <div class="author-info">
                             <span class="author-name">인프라 가디언</span>
-                            <span class="author-role">인프라 및 서버 보안 담당</span>
+                            <span class="author-role">정보보호 운영명세 관리 담당</span>
                         </div>
                     </div>
                     <div class="question">Q. 지원을 고민하시는 분들께 정보보안팀에 합류하기로 하신 결정적인 계기를 이야기해 주세요.</div>
@@ -425,7 +425,6 @@
     <!-- 자바스크립트 -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 스크롤 시 요소 나타나게 하는 Reveal 애니메이션
             const reveals = document.querySelectorAll(".reveal");
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -445,7 +444,6 @@
                 if(reveals.length > 0) reveals[0].classList.add("active");
             }, 100);
 
-            // 상단 스티키 목차 하이라이트 (Scroll Spy) 기능
             const sections = document.querySelectorAll("section[id]");
             const navLinks = document.querySelectorAll(".floating-nav a");
 
@@ -454,7 +452,6 @@
                 
                 sections.forEach((section) => {
                     const sectionTop = section.offsetTop;
-                    // 사용자가 섹션에 진입했다고 느끼는 시점을 위해 200px 오프셋 적용
                     if (pageYOffset >= sectionTop - 200) {
                         current = section.getAttribute("id");
                     }
