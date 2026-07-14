@@ -28,20 +28,23 @@
             font-family: 'Pretendard', sans-serif; 
             color: var(--text-main); 
             line-height: 1.6;
-            /* 테크(Tech) 감성의 모눈종이(Grid) 배경 */
             background-color: #F7F9FC;
             background-image: radial-gradient(#D5DCE4 1px, transparent 1px);
             background-size: 24px 24px;
             overflow-x: hidden;
-            word-break: keep-all; /* 단어 단위로 예쁘게 줄바꿈 */
+            word-break: keep-all; 
         }
 
-        /* 텍스트 그라데이션 효과 (요즘 느낌의 핵심) */
+        /* 텍스트 그라데이션 및 하이라이트 효과 */
         .text-gradient {
             background: linear-gradient(135deg, var(--mega-blue), #00D2FF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 800;
+        }
+        .highlight-blue {
+            color: var(--mega-blue);
+            font-weight: 700;
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 120px 24px; position: relative; z-index: 2; }
@@ -55,19 +58,39 @@
         }
         .logo-img { height: 32px; object-fit: contain; } 
 
+        /* 상단 Hero 영역 배경 디자인 */
+        .hero-wrapper {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(247, 249, 252, 0.85); 
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Hero 섹션 텍스트 배치 */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 140px; position: relative; z-index: 2; }
+        .hero h1 { font-size: 4.5rem; color: var(--mega-dark); line-height: 1.3; margin-bottom: 24px; }
+        .hero p { font-size: 1.3rem; margin-bottom: 40px; }
+
         /* Bento Grid 카드 공통 스타일 */
         .bento-card {
             background: var(--card-bg);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border: 1px solid #ffffff;
-            border-radius: 32px; /* 둥근 모서리 극대화 */
+            border-radius: 32px; 
             box-shadow: var(--card-shadow);
             padding: 48px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-        
         .bento-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--card-hover-shadow);
@@ -76,8 +99,6 @@
 
         h1, h2, h3 { font-weight: 800; margin-bottom: 24px; letter-spacing: -0.03em; }
         h2 { font-size: 2.8rem; text-align: center; margin-bottom: 60px; color: var(--mega-dark); }
-        
-        /* 문단 폭 제한으로 자연스러운 줄바꿈 유도 */
         p { font-size: 1.1rem; color: var(--text-muted); font-weight: 400; line-height: 1.7; max-width: 800px; margin: 0 auto; }
 
         /* 트렌디한 Pill 뱃지 */
@@ -89,15 +110,8 @@
             border: 1px solid rgba(0, 114, 206, 0.1);
         }
 
-        /* Hero 섹션 */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 140px; }
-        .hero h1 { font-size: 4.5rem; color: var(--mega-dark); line-height: 1.3; margin-bottom: 24px; }
-        .hero p { font-size: 1.3rem; margin-bottom: 40px; }
-
-        /* 직무 소개 3단 Bento Grid */
+        /* 그리드 레이아웃 */
         .bento-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
-        
-        /* 인터뷰 2단 Bento Grid */
         .bento-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 32px; }
 
         .icon-box { 
@@ -135,9 +149,8 @@
         .author-info { display: flex; flex-direction: column; }
         .author-name { font-weight: 700; color: var(--mega-dark); font-size: 1.1rem; }
         .author-role { font-size: 0.9rem; color: var(--mega-blue); font-weight: 600; }
-        
         .interview-card p.question { font-weight: 700; color: var(--mega-dark); margin-bottom: 16px; font-size: 1.1rem; }
-        .interview-card p.quote { font-size: 1.05rem; color: var(--text-muted); margin: 0; padding-left: 16px; border-left: 4px solid #E2E8F0; }
+        .interview-card p.quote { font-size: 1.05rem; color: var(--text-muted); margin: 0; padding-left: 16px; border-left: 4px solid #E2E8F0; line-height: 1.8; }
 
         /* 푸터 */
         footer { text-align: center; padding: 80px 24px; background: var(--mega-dark); color: #fff; border-top-left-radius: 48px; border-top-right-radius: 48px; }
@@ -164,44 +177,47 @@
         <img src="megastudy-si.svg" alt="메가스터디교육 로고" class="logo-img">
     </header>
 
-    <!-- Section 1: Hero -->
-    <section class="hero container reveal">
-        <div style="width: 100%;">
-            <div class="badge">🚀 메가스터디교육 채용 연계형 인턴십</div>
-            <h1>메가스터디교육 정보보안팀,<br><span class="text-gradient">안전한 배움의 기준을 세우다</span></h1>
-            <p>1등 교육 플랫폼의 수백만 데이터와 인프라를 수호하는 컨트롤 타워.<br>견고하고 유연하게 일하는 정보보안팀의 이야기를 소개합니다.</p>
-        </div>
-    </section>
+    <!-- Section 1: Hero (배경 이미지 적용 영역) -->
+    <div class="hero-wrapper">
+        <div class="hero-overlay"></div>
+        <section class="hero container reveal">
+            <div style="width: 100%;">
+                <div class="badge">🚀 메가스터디교육 채용 연계형 인턴십</div>
+                <h1>메가스터디교육 정보보안팀,<br><span class="text-gradient">안전한 배움의 기준을 세우다</span></h1>
+                <p>1등 교육 플랫폼의 수백만 데이터와 인프라를 수호하는 컨트롤 타워.<br>견고하고 유연하게 일하는 정보보안팀의 이야기를 소개합니다.</p>
+            </div>
+        </section>
+    </div>
 
     <!-- Section 2: 메가스터디 로고 의미 -->
     <section class="container reveal">
         <h2>우리가 수호하는 가치, <span class="text-gradient">MegaStudy</span></h2>
         <div class="bento-card" style="text-align: center;">
-            <p style="margin-bottom: 24px; color: var(--text-main); font-size: 1.2rem; font-weight: 500;">메가스터디교육의 심볼은 영문 MegaStudy의 'M'과 'S'를 기초로 제작되었습니다.<br>특히 중심부의 'S'자는 무한대(∞) 기호로 변형하여 <span style="color: var(--mega-blue); font-weight: 700;">무한한 교육의 가능성</span>을 표현합니다.</p>
+            <p style="margin-bottom: 24px; color: var(--text-main); font-size: 1.2rem; font-weight: 500;">메가스터디교육의 심볼은 영문 MegaStudy의 'M'과 'S'를 기초로 제작되었습니다.<br>특히 중심부의 'S'자는 무한대(∞) 기호로 변형하여 <span class="highlight-blue">무한한 교육의 가능성</span>을 표현합니다.</p>
             <p>정교한 직선과 유연한 곡선을 바탕으로 디지털 시대 온·오프라인 통합 서비스 기업의 위상을 나타냅니다. 정보보안팀은 전사적인 정보보호 관리체계를 굳건히 구축하여, 이러한 메가스터디교육의 가치와 가능성을 가장 안전하게 지켜내고 있습니다.</p>
         </div>
     </section>
 
-    <!-- Section 3: 직무 소개 (Bento Grid) -->
+    <!-- Section 3: 직무 소개 (Bento Grid) - 엑셀 업무 기반 업데이트 -->
     <section class="container reveal">
         <h2>직무 및 <span class="text-gradient">핵심 역할</span></h2>
         <div class="bento-grid-3">
             <div class="bento-card">
                 <div class="icon-box">📋</div>
-                <h3>개인정보보호 & 컴플라이언스</h3>
-                <p>사내 비즈니스 환경에 최적화된 정보보호 관리체계를 기획합니다. 관련 법령 변화를 선제적으로 분석하여 리스크를 최소화하고, 유관 부서가 헷갈림 없이 일할 수 있도록 명확한 보안 가이드라인을 제공합니다.</p>
+                <h3>기획 및 ISMS 인증 관리</h3>
+                <p>전사 정보보호 및 위험관리 계획을 수립하고 정보보호 공시를 진행합니다. 특히 <span class="highlight-blue">ISMS 범위정의 및 인증 심사</span>에 철저히 대응하며, 상시 관리 증적과 보안조치 결과를 체계적으로 관리하여 안정적인 관리체계를 유지합니다.</p>
             </div>
             
             <div class="bento-card">
                 <div class="icon-box">🎯</div>
-                <h3>취약점 진단 & 리스크 매니지먼트</h3>
-                <p>신규 서비스가 런칭되기 전, 철저한 보안성 검토를 수행하여 위협을 사전에 차단합니다. 정기적인 시스템 진단과 모의해킹으로 취약점을 식별하고, 서비스의 무결성과 신뢰성을 완벽하게 검증합니다.</p>
+                <h3>위험 평가 및 취약점 진단</h3>
+                <p>사업부별 정보자산을 식별하고 그 가치를 평가합니다. 시스템 취약점 진단을 기획 및 수행하며, 발견된 취약점에 대한 <span class="highlight-blue">위험평가 및 조치계획</span>을 꼼꼼하게 수립하여 잠재적 보안 리스크를 선제적으로 통제합니다.</p>
             </div>
 
             <div class="bento-card">
-                <div class="icon-box">🧱</div>
-                <h3>네트워크 & 방화벽 보안 관리</h3>
-                <p>인프라 네트워크의 데이터 흐름과 접근 제어 정책을 총괄합니다. 주요 솔루션을 최적화하여 트래픽을 상시 모니터링하며, 비정상적인 접근 시도로부터 핵심 자산과 중단 없는 서비스를 견고하게 보장합니다.</p>
+                <div class="icon-box">🛡️</div>
+                <h3>컴플라이언스 감사 및 교육</h3>
+                <p>개인정보 처리 위수탁 점검 및 시스템 실태를 확인하고 내부감사를 수행합니다. 또한 침해사고 모의훈련을 비롯해 <span class="highlight-blue">전사 임직원 및 외부 협력사 대상 정보보호 교육</span>을 기획·진행하여 전사적인 보안 인식을 강화합니다.</p>
             </div>
         </div>
     </section>
@@ -231,69 +247,28 @@
         </div>
     </section>
 
-    <!-- Section 5: 인터뷰 (2단 Bento Grid) -->
+    <!-- Section 5: 인터뷰 (2단 Bento Grid) - 줄바꿈 및 하이라이트 적용 -->
     <section class="container reveal">
         <h2>현직자의 <span class="text-gradient">리얼 보이스</span></h2>
         <div class="bento-grid-2">
             
-            <!-- 팀장님 -->
+            <!-- 도연 선배님 -->
             <div class="bento-card interview-card">
                 <div>
                     <div class="interview-header">
                         <div class="emoji-pic">👨‍💻</div>
                         <div class="author-info">
-                            <span class="author-name">팀장님</span>
+                            <span class="author-name">[인프라 가디언] 도연 선배님</span>
                             <span class="author-role">Information Security Team</span>
                         </div>
                     </div>
-                    <p class="question">Q. 정보보안팀 신규입사자는 어떤 역량을 가지고 있기를 기대하시나요?</p>
+                    <p class="question">Q. 지원을 고민하시는 분들께 선배님께서 메가스터디 정보보안팀에 합류하기로 하신 결정적인 계기를 이야기해 주세요.</p>
                 </div>
-                <p class="quote">"[여기에 답변을 적어주세요]"</p>
-            </div>
-
-            <!-- 과장님 -->
-            <div class="bento-card interview-card">
-                <div>
-                    <div class="interview-header">
-                        <div class="emoji-pic">🧑‍💻</div>
-                        <div class="author-info">
-                            <span class="author-name">과장님</span>
-                            <span class="author-role">Information Security Team</span>
-                        </div>
-                    </div>
-                    <p class="question">Q. 정보보안팀만의 장점이 무엇이라 생각하시나요? (타사/타부서대비)</p>
-                </div>
-                <p class="quote">"[여기에 답변을 적어주세요]"</p>
-            </div>
-
-            <!-- 대리님 -->
-            <div class="bento-card interview-card">
-                <div>
-                    <div class="interview-header">
-                        <div class="emoji-pic">👩‍💻</div>
-                        <div class="author-info">
-                            <span class="author-name">대리님</span>
-                            <span class="author-role">Information Security Team</span>
-                        </div>
-                    </div>
-                    <p class="question">Q. 메가스터디교육의 정보보호를 다른 산업군과 비교했을 때 특별히 관리해야 하는 사항이 있나요?</p>
-                </div>
-                <p class="quote">"[여기에 답변을 적어주세요]"</p>
-            </div>
-
-            <!-- 경환 선배님 -->
-            <div class="bento-card interview-card">
-                <div>
-                    <div class="interview-header">
-                        <div class="emoji-pic">👨‍💻</div>
-                        <div class="author-info">
-                            <span class="author-name">경환 선배님</span>
-                            <span class="author-role">Information Security Team</span>
-                        </div>
-                    </div>
-                    <p class="question">Q. 메가스터디교육에서 일하시며 성장하고 있다고 느끼게 된 계기나 경험이 있으신가요?</p>
-                </div>
-                <p class="quote">"[여기에 답변을 적어주세요]"</p>
+                <p class="quote">
+                    "이전부터 <strong>정보시스템 보안과 개인정보 보호를 아우르며</strong>,<br>대외 서비스를 중심으로 하는 기업에서 보안 업무를 해보고 싶었습니다.<br><br>
+                    메가스터디교육은 수능뿐만 아니라 유·초·중등까지 다양한 인강 및 학원 서비스를 운영하고 있잖아요.<br>그만큼 네트워크, 서버, 개인정보 보호, 보안 운영 등 <span class="highlight-blue">보안의 모든 영역을 종합적으로 경험</span>할 수 있는 곳이라고 확신했습니다.<br><br>
+                    이곳에서 폭넓은 보안 실무를 겪으며 안정적인 교육 서비스를 만드는 데 기여하고 싶다는 것이 가장 큰 합류 계기였습니다."
+                </p>
             </div>
 
             <!-- 진경 선배님 -->
@@ -302,28 +277,55 @@
                     <div class="interview-header">
                         <div class="emoji-pic">👩‍💻</div>
                         <div class="author-info">
-                            <span class="author-name">진경 선배님</span>
+                            <span class="author-name">[보안 프로파일러] 진경 선배님</span>
                             <span class="author-role">Information Security Team</span>
                         </div>
                     </div>
-                    <p class="question">Q. 메가스터디교육의 정보보안팀이 되길 꿈꾸는 분들에게 면접 노하우 한가지만 말씀 부탁드립니다.</p>
+                    <p class="question">Q. 메가스터디교육의 정보보안팀이 되길 꿈꾸는 분들에게 면접 노하우 한 가지만 말씀 부탁드립니다.</p>
                 </div>
-                <p class="quote">"[여기에 답변을 적어주세요]"</p>
+                <p class="quote">
+                    "면접관님들마다 선호하는 인재상이 조금씩 다릅니다.<br>실무 지식을 깊게 보시는 분도 계시고, 진중하고 열정적인 태도를 중요하게 보시는 분도 계시죠.<br><br>
+                    그래서 가장 중요한 건 <strong>'채용 공고(JD)'를 꼼꼼히 분석</strong>하는 거예요.<br>예를 들어, 제가 지원했을 때의 공고는 '실무는 들어와서 배워도 좋다'는 뉘앙스가 있었거든요.<br><br>
+                    그래서 완벽한 지식보다는 <span class="highlight-blue">'열심히 배우고 성장하겠다'는 패기</span>를 강력하게 밀고 나갔고, 그 진정성이 통했다고 생각합니다."
+                </p>
             </div>
 
-            <!-- 도연 선배님 -->
+            <!-- 과장님 -->
             <div class="bento-card interview-card">
                 <div>
                     <div class="interview-header">
                         <div class="emoji-pic">🧑‍💻</div>
                         <div class="author-info">
-                            <span class="author-name">도연 선배님</span>
+                            <span class="author-name">[사이버 아키텍트] 과장님</span>
                             <span class="author-role">Information Security Team</span>
                         </div>
                     </div>
-                    <p class="question">Q. 지원을 고민하시는 분들께 선배님께서 메가스터디 정보보안팀에 합류하기로 하신 결정적인 계기를 이야기해 주세요.</p>
+                    <p class="question">Q. 정보보안팀만의 장점이 무엇이라 생각하시나요? (타사/타부서 대비)</p>
                 </div>
-                <p class="quote">"[여기에 답변을 적어주세요]"</p>
+                <p class="quote">
+                    "타 부서와 비교했을 때, <strong>전사 모든 사업부와 유기적으로 소통하며 협업을 주도</strong>할 수 있다는 점이 큰 매력입니다.<br>팀 내부는 수평적이라 끈끈한 팀워크와 시너지가 나오고요.<br><br>
+                    단순 기술직을 넘어 법령이나 ISMS 인증 등 컴플라이언스까지 다루는 <span class="highlight-blue">'융합형 전문성'</span>을 기를 수 있죠.<br><br>
+                    또한 타 기업과 비교해도 다양한 보안 솔루션을 다루며 프로세스 전반을 폭넓게 경험할 수 있습니다.<br>교육 업계 1위 기업인 만큼 임직원을 위한 든든한 교육 관련 복지 혜택을 누릴 수 있다는 것도 빼놓을 수 없는 장점입니다."
+                </p>
+            </div>
+
+            <!-- 팀장님 -->
+            <div class="bento-card interview-card">
+                <div>
+                    <div class="interview-header">
+                        <div class="emoji-pic">👨‍💻</div>
+                        <div class="author-info">
+                            <span class="author-name">[제로 트러스트 리더] 팀장님</span>
+                            <span class="author-role">Information Security Team</span>
+                        </div>
+                    </div>
+                    <p class="question">Q. 정보보안팀 신규 입사자는 어떤 역량을 가지고 있기를 기대하시나요?</p>
+                </div>
+                <p class="quote">
+                    "직무에 맞는 기초 지식, 논리적인 문제 해결 능력, 원활한 의사소통, 그리고 높은 윤리 의식을 기대합니다.<br><br>
+                    하지만 신규 입사자가 입사 초기부터 모든 분야의 완벽한 전문성을 갖추고 있을 거라 생각하지는 않습니다.<br><br>
+                    그보다는 본인이 <strong>부족한 부분을 솔직하게 인정</strong>하고, 적극적으로 질문하며 스펀지처럼 빠르게 흡수하는 <span class="highlight-blue">'성장 가능성'과 배우려는 태도</span>를 가장 중요하게 생각하고 있습니다."
+                </p>
             </div>
 
         </div>
