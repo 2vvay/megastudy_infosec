@@ -16,9 +16,9 @@
             
             /* 카드 및 그림자 변수 */
             --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(255, 255, 255, 0.4);
             --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-            --card-hover-shadow: 0 20px 40px rgba(0, 114, 206, 0.12);
+            /* 호버 시 사이버틱한 글로우 효과 변수 */
+            --card-hover-glow: 0 20px 40px rgba(0, 114, 206, 0.1), 0 0 0 2px rgba(0, 114, 206, 0.15);
         }
 
         /* 기본 초기화 */
@@ -32,6 +32,7 @@
             background-size: 24px 24px;
             overflow-x: hidden;
             word-break: keep-all; 
+            -webkit-font-smoothing: antialiased; /* 폰트 렌더링 부드럽게 */
         }
 
         /* 텍스트 강조 스타일 */
@@ -49,58 +50,59 @@
         /* 레이아웃 컨테이너 */
         .container { max-width: 1200px; margin: 0 auto; padding: 120px 24px; position: relative; z-index: 2; }
         
-        /* 상단 헤더 영역 */
+        /* 로고 영역 (좌측 상단 고정) */
         header { 
-            padding: 24px 40px; position: absolute; width: 100%; top: 0; z-index: 99; 
+            position: absolute; top: 32px; left: 40px; z-index: 99; 
         }
         .logo-img { height: 32px; object-fit: contain; } 
 
-        /* 플로팅 내비게이션 영역 */
+        /* 중앙 정렬된 다이내믹 플로팅 내비게이션 */
         .floating-nav {
             position: fixed;
-            top: 80px; 
-            left: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 114, 206, 0.15);
+            top: 24px; 
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 114, 206, 0.1);
             border-radius: 50px;
             padding: 6px 8px;
             display: flex;
             gap: 4px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             z-index: 100;
+            transition: all 0.3s ease;
         }
         .nav-link {
             text-decoration: none;
             color: var(--text-muted);
             font-weight: 600;
             font-size: 0.95rem;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 40px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-link:hover {
-            background: rgba(0, 114, 206, 0.05);
             color: var(--mega-blue);
         }
         .nav-link.active {
             background: var(--mega-blue);
             color: #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 114, 206, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 114, 206, 0.25);
         }
 
         /* 메인 배너(Hero) 영역 */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 100px; position: relative; z-index: 2; }
-        .hero h1 { font-size: 4.5rem; color: var(--mega-dark); line-height: 1.3; margin-bottom: 24px; letter-spacing: -1px; }
-        .hero p { font-size: 1.3rem; margin-bottom: 40px; color: var(--text-muted); }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 80px; position: relative; z-index: 2; }
+        .hero h1 { font-size: 4.8rem; color: var(--mega-dark); line-height: 1.25; margin-bottom: 24px; letter-spacing: -0.04em; }
+        .hero p { font-size: 1.35rem; margin-bottom: 40px; color: var(--text-muted); font-weight: 400; letter-spacing: -0.02em; }
 
         /* 뱃지 컴포넌트 */
         .badge {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 10px 20px; background: #ffffff; color: var(--mega-blue);
-            border-radius: 50px; font-weight: 700; font-size: 0.95rem; margin-bottom: 24px; 
-            box-shadow: 0 4px 12px rgba(0, 114, 206, 0.1);
+            padding: 10px 24px; background: #ffffff; color: var(--mega-blue);
+            border-radius: 50px; font-weight: 700; font-size: 0.95rem; margin-bottom: 32px; 
+            box-shadow: 0 4px 16px rgba(0, 114, 206, 0.08);
             border: 1px solid rgba(0, 114, 206, 0.1);
         }
 
@@ -112,13 +114,15 @@
         /* 카드 컴포넌트 공통 스타일 */
         .bento-card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
             border: 1px solid #ffffff; border-radius: 32px; 
             box-shadow: var(--card-shadow); padding: 48px;
-            transition: all 0.3s ease; position: relative; overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+            position: relative; overflow: hidden;
         }
         .bento-card:hover {
-            transform: translateY(-5px); box-shadow: var(--card-hover-shadow); border: 1px solid rgba(0, 114, 206, 0.3);
+            transform: translateY(-8px); 
+            box-shadow: var(--card-hover-glow); 
         }
         
         /* 그리드 레이아웃 설정 */
@@ -133,33 +137,44 @@
             border: 1px solid rgba(0, 114, 206, 0.1);
             color: var(--mega-blue); border-radius: 24px; 
             display: flex; align-items: center; justify-content: center; 
-            font-size: 2rem; margin-bottom: 32px; 
+            font-size: 2.2rem; margin-bottom: 32px; 
             box-shadow: 0 8px 16px rgba(0, 114, 206, 0.08); 
         }
 
         /* 리스트 컴포넌트 */
         .check-list { list-style: none; padding-left: 0; max-width: 900px; margin: 0 auto; text-align: left; }
         .check-list li { 
-            position: relative; padding: 32px 32px 32px 72px; margin-bottom: 24px; 
+            position: relative; padding: 32px 32px 32px 76px; margin-bottom: 24px; 
             background: #ffffff; border-radius: 24px; box-shadow: 0 8px 20px rgba(0,0,0,0.03);
             border: 1px solid rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+        .check-list li:hover {
+            transform: translateX(5px);
+            border-color: rgba(0, 114, 206, 0.2);
         }
         .req-title {
             font-size: 1.3rem; font-weight: 800; color: var(--mega-blue); margin-bottom: 12px;
         }
         .req-desc {
-            font-size: 1.05rem; color: var(--text-main); font-weight: 500; line-height: 1.6;
+            font-size: 1.05rem; color: var(--text-main); font-weight: 500; line-height: 1.7;
         }
         .check-list li::before { 
-            content: '✓'; position: absolute; left: 24px; top: 32px; 
+            content: '✓'; position: absolute; left: 24px; top: 34px; 
             color: #fff; background: var(--mega-blue); width: 32px; height: 32px; 
             border-radius: 50%; display: flex; align-items: center; justify-content: center; 
             font-size: 1rem; font-weight: bold; 
         }
 
-        /* 인터뷰 카드 레이아웃 */
-        .interview-card { display: flex; flex-direction: column; justify-content: space-between; padding: 40px; }
-        .interview-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        /* 인터뷰 카드 레이아웃 및 디자인 고도화 */
+        .interview-card { display: flex; flex-direction: column; justify-content: flex-start; padding: 48px; position: relative; z-index: 1;}
+        /* 대형 따옴표 워터마크 */
+        .interview-card::after {
+            content: '"'; position: absolute; right: 30px; bottom: -50px;
+            font-size: 12rem; font-family: serif; color: rgba(0, 114, 206, 0.04);
+            z-index: -1; line-height: 1; pointer-events: none;
+        }
+        .interview-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .emoji-pic { 
             width: 64px; height: 64px; border-radius: 50%; background: #F0F4F8; 
             display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;
@@ -168,10 +183,10 @@
         .author-name { font-weight: 800; color: var(--mega-blue); font-size: 1.2rem; }
         .author-role { font-size: 0.95rem; color: var(--text-muted); font-weight: 600; margin-top: 4px; }
         
-        .interview-card .question { font-weight: 800; color: var(--mega-dark); margin-bottom: 20px; font-size: 1.15rem; line-height: 1.5; }
+        .interview-card .question { font-weight: 800; color: var(--mega-dark); margin-bottom: 24px; font-size: 1.15rem; line-height: 1.6; letter-spacing: -0.02em;}
         
-        .quote-wrapper { padding-left: 16px; border-left: 4px solid #E2E8F0; }
-        .quote-wrapper p { font-size: 1.05rem; color: var(--text-main); line-height: 1.6; margin-bottom: 12px; text-align: left; }
+        .quote-wrapper { padding-left: 20px; border-left: 4px solid #E2E8F0; }
+        .quote-wrapper p { font-size: 1.05rem; color: var(--text-main); line-height: 1.7; margin-bottom: 16px; text-align: left; }
         .quote-wrapper p:last-child { margin-bottom: 0; }
 
         /* 하단 푸터 영역 */
@@ -184,21 +199,23 @@
 
         /* 모바일 반응형 처리 */
         @media (max-width: 768px) {
-            header { padding: 16px 20px; }
-            .container { padding: 80px 16px; }
+            header { position: relative; top: 0; left: 0; padding: 20px; text-align: center; }
+            .container { padding: 60px 16px; }
             
+            /* 모바일에서는 네비게이션을 하단에 고정하여 터치하기 쉽게 변경 */
             .floating-nav {
-                top: 70px; left: 50%; transform: translateX(-50%);
+                top: auto; bottom: 24px; left: 50%; transform: translateX(-50%);
                 width: max-content; max-width: 90%; 
                 padding: 8px; gap: 4px;
                 overflow-x: auto; white-space: nowrap;
+                box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
             }
-            .nav-link { padding: 8px 12px; font-size: 0.85rem; }
+            .nav-link { padding: 10px 14px; font-size: 0.9rem; }
             
-            .hero h1 { font-size: 2.4rem; }
+            .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1.1rem; }
             
-            h2 { font-size: 2rem; margin-bottom: 40px; }
+            h2 { font-size: 2.2rem; margin-bottom: 40px; }
             
             .bento-card { padding: 32px 24px; border-radius: 24px; }
             
@@ -206,17 +223,18 @@
             .check-list li::before { left: 16px; top: 24px; }
             
             .interview-card { padding: 32px 24px; }
+            .interview-card::after { right: 10px; bottom: -30px; font-size: 8rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header (Logo) -->
     <header>
         <img src="megastudy-si.svg" alt="메가스터디교육 로고" class="logo-img">
     </header>
 
-    <!-- 내비게이션 -->
+    <!-- 다이내믹 플로팅 내비게이션 -->
     <nav class="floating-nav">
         <a href="#home" class="nav-link active">홈</a>
         <a href="#about" class="nav-link">팀 소개</a>
@@ -334,9 +352,9 @@
                     <div class="question">Q. 정보보안팀 신규 입사자는 어떤 역량을 가지고 있기를 기대하시나요?</div>
                 </div>
                 <div class="quote-wrapper">
-                    <p>"<strong style="color: var(--mega-blue);">직무에 맞는 기초 지식, 논리적인 문제 해결 능력, 원활한 의사소통, 그리고 높은 윤리 의식을 기대합니다.</strong>"</p>
-                    <p>"하지만 신규 입사자가 입사 초기부터 모든 분야의 완벽한 전문성을 갖추고 있을 거라 생각하지는 않습니다."</p>
-                    <p>"그보다는 본인이 <strong>부족한 부분을 솔직하게 인정</strong>하고, 적극적으로 질문하며 스펀지처럼 빠르게 흡수하는 <span class="highlight-blue">'성장 가능성'과 배우려는 태도</span>를 가장 중요하게 생각하고 있습니다."</p>
+                    <p><strong style="color: var(--mega-blue);">직무에 맞는 기초 지식, 논리적인 문제 해결 능력, 원활한 의사소통, 그리고 높은 윤리 의식을 기대합니다.</strong></p>
+                    <p>하지만 신규 입사자가 입사 초기부터 모든 분야의 완벽한 전문성을 갖추고 있을 거라 생각하지는 않습니다.</p>
+                    <p>그보다는 본인이 <strong>부족한 부분을 솔직하게 인정</strong>하고, 적극적으로 질문하며 스펀지처럼 빠르게 흡수하는 <span class="highlight-blue">'성장 가능성'과 배우려는 태도</span>를 가장 중요하게 생각하고 있습니다.</p>
                 </div>
             </div>
 
@@ -352,9 +370,9 @@
                     <div class="question">Q. 정보보안팀만의 장점이 무엇이라 생각하시나요?</div>
                 </div>
                 <div class="quote-wrapper">
-                    <p>"가장 큰 장점은 지원 부서로서 <strong>전사 모든 사업부와 유기적으로 소통하며 협업을 주도</strong>할 수 있다는 것입니다. 팀 내부는 벽이 없고 수평적인 분위기라 끈끈한 팀워크와 시너지가 자연스럽게 나옵니다."</p>
-                    <p>"또한, 단순 기술직을 넘어 법령(개인정보보호법 등)과 인증(ISMS 등) 컴플라이언스까지 다루는 <span class="highlight-blue">'기술과 법률의 융합형 전문성'</span>을 기를 수 있죠."</p>
-                    <p>"타 기업 대비 정말 다양한 보안 솔루션 운영과 프로세스 전반을 폭넓게 경험할 수 있으며, 교육 업계 1위 선도 기업인 만큼 임직원 성장을 돕는 탄탄한 교육 관련 복지 혜택도 빼놓을 수 없습니다."</p>
+                    <p>가장 큰 장점은 지원 부서로서 <strong>전사 모든 사업부와 유기적으로 소통하며 협업을 주도</strong>할 수 있다는 것입니다. 팀 내부는 벽이 없고 수평적인 분위기라 끈끈한 팀워크와 시너지가 자연스럽게 나옵니다.</p>
+                    <p>또한, 단순 기술직을 넘어 법령(개인정보보호법 등)과 인증(ISMS 등) 컴플라이언스까지 다루는 <span class="highlight-blue">'기술과 법률의 융합형 전문성'</span>을 기를 수 있죠.</p>
+                    <p>타 기업 대비 정말 다양한 보안 솔루션 운영과 프로세스 전반을 폭넓게 경험할 수 있으며, 교육 업계 1위 선도 기업인 만큼 임직원 성장을 돕는 탄탄한 교육 관련 복지 혜택도 빼놓을 수 없습니다.</p>
                 </div>
             </div>
 
@@ -370,9 +388,9 @@
                     <div class="question">Q. 메가스터디교육에서 일하시며 성장하고 있다고 느끼게 된 계기나 경험이 있으신가요?</div>
                 </div>
                 <div class="quote-wrapper">
-                    <p>"지난 4년간 정보보안 실무를 수행하며, 기술이 발전할수록 보안의 중요성도 그 이상으로 커진다는 것을 현장에서 깊이 깨닫고 있습니다."</p>
-                    <p>"특히 메가스터디교육은 업계 최고 수준의 거대한 트래픽과 데이터를 다루는 곳이잖아요. <strong>규모가 큰 만큼 촘촘한 관리가 필수적</strong>이죠."</p>
-                    <p>"이렇게 거대한 인프라를 통제하고 책임감을 가지고 안전하게 지켜내면서, 저 스스로도 <span class="highlight-blue">보안 전문가로서 한 차원 더 깊게 성장</span>하고 있음을 체감하고 있습니다."</p>
+                    <p>지난 4년간 정보보안 실무를 수행하며, 기술이 발전할수록 보안의 중요성도 그 이상으로 커진다는 것을 현장에서 깊이 깨닫고 있습니다.</p>
+                    <p>특히 메가스터디교육은 업계 최고 수준의 거대한 트래픽과 데이터를 다루는 곳이잖아요. <strong>규모가 큰 만큼 촘촘한 관리가 필수적</strong>이죠.</p>
+                    <p>이렇게 거대한 인프라를 통제하고 책임감을 가지고 안전하게 지켜내면서, 저 스스로도 <span class="highlight-blue">보안 전문가로서 한 차원 더 깊게 성장</span>하고 있음을 체감하고 있습니다.</p>
                 </div>
             </div>
 
@@ -388,9 +406,9 @@
                     <div class="question">Q. 메가스터디교육의 정보보안팀이 되길 꿈꾸는 분들에게 면접 노하우 한 가지만 말씀 부탁드립니다.</div>
                 </div>
                 <div class="quote-wrapper">
-                    <p>"가장 중요한 건 <strong>'채용 공고(JD)'를 꼼꼼히 분석</strong>하는 거예요. 제가 지원했을 때의 공고는 '실무는 들어와서 배워도 좋다'는 뉘앙스가 있었거든요."</p>
-                    <p>"따라서 완벽한 지식보다는, 메가스터디의 정보보안팀이 되기 위해 <span class="highlight-blue">'꾸준히 배우려는 마음'</span>과 <span class="highlight-blue">'그 마음에 걸맞은 실행력'</span>을 보여주는 것이 핵심입니다."</p>
-                    <p>"자신의 뚜렷한 목표와 '열심히 배우고 성장하겠다'는 패기를 강력하게 밀고 나간다면, 그 진정성이 충분히 통할 것이라 생각합니다."</p>
+                    <p>가장 중요한 건 <strong>'채용 공고(JD)'를 꼼꼼히 분석</strong>하는 거예요. 제가 지원했을 때의 공고는 '실무는 들어와서 배워도 좋다'는 뉘앙스가 있었거든요.</p>
+                    <p>따라서 완벽한 지식보다는, 메가스터디의 정보보안팀이 되기 위해 <span class="highlight-blue">'꾸준히 배우려는 마음'</span>과 <span class="highlight-blue">'그 마음에 걸맞은 실행력'</span>을 보여주는 것이 핵심입니다.</p>
+                    <p>자신의 뚜렷한 목표와 '열심히 배우고 성장하겠다'는 패기를 강력하게 밀고 나간다면, 그 진정성이 충분히 통할 것이라 생각합니다.</p>
                 </div>
             </div>
 
@@ -406,9 +424,9 @@
                     <div class="question">Q. 지원을 고민하시는 분들께 정보보안팀에 합류하기로 하신 결정적인 계기를 이야기해 주세요.</div>
                 </div>
                 <div class="quote-wrapper">
-                    <p>"<strong>정보시스템 보안과 개인정보 보호를 아우르며</strong>, 대외 서비스를 중심으로 하는 기업에서 보안 업무를 해보고 싶었습니다."</p>
-                    <p>"메가스터디교육은 수능뿐만 아니라 유·초·중등까지 다양한 인강 및 학원 서비스를 운영하고 있잖아요. 그만큼 네트워크, 서버, 개인정보 보호, 보안 운영 등 <span class="highlight-blue">보안의 모든 영역을 종합적으로 경험</span>할 수 있는 곳이라고 확신했습니다."</p>
-                    <p>"이곳에서 폭넓은 보안 실무를 겪으며 안정적인 교육 서비스를 만드는 데 기여하고 싶다는 것이 가장 큰 합류 계기였습니다."</p>
+                    <p><strong>정보시스템 보안과 개인정보 보호를 아우르며</strong>, 대외 서비스를 중심으로 하는 기업에서 보안 업무를 해보고 싶었습니다.</p>
+                    <p>메가스터디교육은 수능뿐만 아니라 유·초·중등까지 다양한 인강 및 학원 서비스를 운영하고 있잖아요. 그만큼 네트워크, 서버, 개인정보 보호, 보안 운영 등 <span class="highlight-blue">보안의 모든 영역을 종합적으로 경험</span>할 수 있는 곳이라고 확신했습니다.</p>
+                    <p>이곳에서 폭넓은 보안 실무를 겪으며 안정적인 교육 서비스를 만드는 데 기여하고 싶다는 것이 가장 큰 합류 계기였습니다.</p>
                 </div>
             </div>
 
